@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anna Cano - En Construcción</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .icon {
+            font-size: 80px;
+            color: #FF9800;
+            margin-bottom: 20px;
+        }
+
+        .loading-bar-container {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 25px;
+            padding: 3px;
+            margin: 20px 0;
+        }
+
+        .loading-bar {
+            width: 0%;
+            height: 30px;
+            background-color: #4CAF50;
+            border-radius: 25px;
+            transition: width 0.4s ease;
+        }
+
+        .loading-text {
+            font-size: 18px;
+            margin-top: 20px;
+            color: #555;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .loading-text {
+                font-size: 16px;
+            }
+
+            .icon {
+                font-size: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <i class="fas fa-hard-hat icon"></i>
+        <h1>Anna Cano</h1>
+        <p>Página en construcción. ¡Gracias por tu paciencia!</p>
+
+        <div class="loading-bar-container">
+            <div class="loading-bar" id="loadingBar"></div>
+        </div>
+        <div class="loading-text" id="loadingText">Cargando... 0%</div>
+    </div>
+
+    <script>
+        let progress = 0;
+        const loadingBar = document.getElementById('loadingBar');
+        const loadingText = document.getElementById('loadingText');
+
+        function updateLoadingBar() {
+            if (progress < 100) {
+                progress += 1;
+                loadingBar.style.width = progress + '%';
+                loadingText.textContent = 'Cargando... ' + progress + '%';
+            } else {
+                progress = 0; // Reinicia la barra al llegar al 100%
+            }
+        }
+
+        setInterval(updateLoadingBar, 100); // Actualiza la barra cada 100ms
+    </script>
+</body>
+</html>
